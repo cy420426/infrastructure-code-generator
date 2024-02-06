@@ -265,7 +265,7 @@ public class GeneratorInfrastructureAppProcessor extends AbstractProcessor {
                         .addJavadoc("@return 是否删除成功")
                         .addModifiers(Modifier.PUBLIC, Modifier.ABSTRACT)
                         .addParameter(ParameterizedTypeName.get(ClassName.get(List.class), TypeName.get(Long.class)), "ids")
-                        .returns(TypeName.get(Boolean.class))
+                        .returns(TypeName.BOOLEAN)
                         .build())
                 .addMethod(MethodSpec.methodBuilder("remove" + simpleClassName + "ById")
                         .addJavadoc("基础设施层应用已生成根据id删除实体$L方法:$L\n\n", simpleClassName, "remove" + simpleClassName + "ById")
@@ -273,7 +273,7 @@ public class GeneratorInfrastructureAppProcessor extends AbstractProcessor {
                         .addJavadoc("@return 是否删除成功")
                         .addModifiers(Modifier.PUBLIC, Modifier.ABSTRACT)
                         .addParameter(TypeName.get(Long.class), "id")
-                        .returns(TypeName.get(Boolean.class))
+                        .returns(TypeName.BOOLEAN)
                         .build())
                 .addMethod(MethodSpec.methodBuilder("remove" + simpleClassName)
                         .addJavadoc("基础设施层应用已生成根据条件删除实体$L方法:$L\n\n", simpleClassName, "remove" + simpleClassName)
@@ -281,7 +281,7 @@ public class GeneratorInfrastructureAppProcessor extends AbstractProcessor {
                         .addJavadoc("@return 是否删除成功")
                         .addModifiers(Modifier.PUBLIC, Modifier.ABSTRACT)
                         .addParameter(TypeName.get(classTypeMirror), entityParam)
-                        .returns(TypeName.BOOLEAN.box())
+                        .returns(TypeName.BOOLEAN)
                         .build());
         //判断字段注解是否存在根据不同注解生成不同方法
         generatorQueryByFieldInterfaceMethod(classElement, classBuilder, classTypeMirror, entityParam, simpleClassName);
@@ -448,7 +448,7 @@ public class GeneratorInfrastructureAppProcessor extends AbstractProcessor {
                         .addStatement(CodeBlock.builder().indent()
                                 .add("return this.removeByIds(ids)").unindent()
                                 .build())
-                        .returns(TypeName.get(Boolean.class))
+                        .returns(TypeName.BOOLEAN)
                         .build())
                 .addMethod(MethodSpec.methodBuilder("remove" + simpleClassName + "ById")
                         .addJavadoc("基础设施层应用已生成根据id删除实体$L方法:$L\n\n", simpleClassName, "remove" + simpleClassName + "ById")
@@ -460,7 +460,7 @@ public class GeneratorInfrastructureAppProcessor extends AbstractProcessor {
                         .addStatement(CodeBlock.builder()
                                 .add("return this.removeById(id)")
                                 .build())
-                        .returns(TypeName.get(Boolean.class))
+                        .returns(TypeName.BOOLEAN)
                         .build())
                 .addMethod(MethodSpec.methodBuilder("remove" + simpleClassName)
                         .addJavadoc("基础设施层应用已生成根据条件删除实体$L方法:$L\n\n", simpleClassName, "remove" + simpleClassName)
@@ -473,7 +473,7 @@ public class GeneratorInfrastructureAppProcessor extends AbstractProcessor {
                                 .add("return this.remove($L)", queryParamCodeBlock)
                                 .unindent().unindent().unindent().unindent()
                                 .build())
-                        .returns(TypeName.BOOLEAN.box())
+                        .returns(TypeName.BOOLEAN)
                         .build());
         //判断字段注解是否存在根据不同注解生成不同方法
         generatorQueryByFieldInterfaceMethodImpl(classElement, classBuilder, classTypeMirror, entityParam, simpleClassName);
@@ -505,7 +505,7 @@ public class GeneratorInfrastructureAppProcessor extends AbstractProcessor {
                         .addJavadoc("@return 是否删除成功")
                         .addModifiers(Modifier.PUBLIC, Modifier.ABSTRACT)
                         .addParameter(typeName, firstCharToLowerCase)
-                        .returns(TypeName.BOOLEAN.box())
+                        .returns(TypeName.BOOLEAN)
                         .build());
             }
         }
@@ -555,7 +555,7 @@ public class GeneratorInfrastructureAppProcessor extends AbstractProcessor {
                         .addAnnotation(Override.class)
                         .addParameter(typeName, firstCharToLowerCase)
                         .addStatement(codeBlockBuilder.build())
-                        .returns(TypeName.BOOLEAN.box())
+                        .returns(TypeName.BOOLEAN)
                         .build());
             }
         }
@@ -573,7 +573,7 @@ public class GeneratorInfrastructureAppProcessor extends AbstractProcessor {
                         .addJavadoc("@return 是否更新成功")
                         .addModifiers(Modifier.PUBLIC, Modifier.ABSTRACT)
                         .addParameter(TypeName.get(classTypeMirror), entityParam)
-                        .returns(TypeName.BOOLEAN.box())
+                        .returns(TypeName.BOOLEAN)
                         .build());
             }
         }
@@ -610,7 +610,7 @@ public class GeneratorInfrastructureAppProcessor extends AbstractProcessor {
                         .addAnnotation(Override.class)
                         .addParameter(TypeName.get(classTypeMirror), entityParam)
                         .addStatement(codeBlockBuilder.build())
-                        .returns(TypeName.BOOLEAN.box())
+                        .returns(TypeName.BOOLEAN)
                         .build());
             }
         }
