@@ -13,8 +13,8 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.SOURCE)
 public @interface GeneratorInfrastructureApplication {
-    String generatorJavaPackageLocation() default "generator";
-
+    String generatorJavaPackageLocation() default "com.generator";
     String generatorXmlPackageLocation() default "mapper";
+
     String author() default "cyjer generator";
 }
